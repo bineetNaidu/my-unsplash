@@ -9,6 +9,8 @@
   "author": "BineetNaidu <bineet.s.naidu@gmail.com> (https://bineetnaidu.web.app/)",
   "license": "MIT",
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "bcrypt": "^5.0.0",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "express-validator": "^6.7.0",
