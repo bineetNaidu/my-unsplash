@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
+interface UserDoc extends mongoose.Document {
+  username: string;
+  password: string;
+  email: string;
+  hobby: string;
+}
+
 const UserSchema = new mongoose.Schema(
   {
     username: {
@@ -35,4 +42,4 @@ UserSchema.pre("save", async function (next) {
   }
 });
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model<UserDoc>("User", UserSchema);
