@@ -1,23 +1,32 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true,
+const UserSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    hobby: String,
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  hobby: String,
-});
+  {
+    toJSON: {
+      transform(doc, ret) {
+        delete ret.password;
+      },
+    },
+  }
+);
 UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     const salt = await bcrypt.genSalt();
