@@ -10,7 +10,7 @@ spec:
     - host: my-unsplash.com
       http:
           paths:
-            - path: /
+            - path: /api/users/?(.*)
               backend:
                 serviceName: auth-srv
                 servicePort: 4242
