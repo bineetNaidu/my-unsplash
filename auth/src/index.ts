@@ -3,6 +3,7 @@ import cookieSession from "cookie-session";
 import mongoose from "mongoose";
 
 import { signupRoute } from "./routes/signup";
+import { signinRoute } from "./routes/signin";
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(
 );
 
 app.use(signupRoute);
+app.use(signinRoute);
 
 app.listen(4242, () => {
   console.log(">>> AUTH SERVICE HAS STARTED <<<");
