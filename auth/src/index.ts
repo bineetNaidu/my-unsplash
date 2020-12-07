@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 import { signupRoute } from "./routes/signup";
 import { signinRoute } from "./routes/signin";
+import { signoutRoute } from "./routes/signout";
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(
 
 app.use(signupRoute);
 app.use(signinRoute);
+app.use(signoutRoute);
 
 app.listen(4242, () => {
   console.log(">>> AUTH SERVICE HAS STARTED <<<");
