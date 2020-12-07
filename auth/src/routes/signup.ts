@@ -29,7 +29,7 @@ router.post(
         expiresIn: 3 * 24 * 60 * 60, // ? 3 days,
       });
 
-      res.cookie("jwt", token);
+      req.session = { jwt: token };
       res.json({ status: "OK", user });
     } catch (e) {
       res.status(400).json({ errors: [{ msg: e.message }] });
