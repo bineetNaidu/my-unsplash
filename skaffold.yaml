@@ -12,9 +12,18 @@ build:
       manual:
         - src: 'src/**/*.ts'
           dest: .
+  - image: bineetnaidu/myunsplash-client
+    context: client
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: '**/*.ts*'
+          dest: .
 deploy:
   kubectl:
-    manifests:
+    manifests: 
+    - k8s/client-depl.yaml
     - k8s/auth-depl.yaml
     - k8s/auth-mongo-depl.yaml
     - k8s/ingress-srv.yaml
