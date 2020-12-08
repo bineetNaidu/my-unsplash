@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: images-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: images-mongo
+  template:
+    metadata:
+      labels:
+        app: images-mongo
+    spec:
+      containers:
+      - name: images-mongo
+        image: mongo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: images-mongo-srv
+spec:
+  selector:
+    app: images-mongo
+  ports:
+  - name: images-db
+    protocol: TCP
+    port: 27017
+    targetPort: 27017

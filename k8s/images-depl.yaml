@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: images-depl
+spec:
+  selector:
+    matchLabels:
+      app: images
+  template:
+    metadata:
+      labels:
+        app: images
+    spec:
+      containers:
+      - name: images
+        image: bineetnaidu/myunsplash-images:latest
+        env:
+          - name: MONGO_URI
+            value: 'mongodb://images-mongo-srv:27017/images'
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: images-srv
+spec:
+  selector:
+    app: images
+  ports:
+  - port: 4242
+    targetPort: 4242
