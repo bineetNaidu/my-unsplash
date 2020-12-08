@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { signupRoute } from "./routes/signup";
 import { signinRoute } from "./routes/signin";
 import { signoutRoute } from "./routes/signout";
+import { currentUserRouter } from "./routes/currentUser";
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(
   })
 );
 
+app.use(currentUserRouter);
 app.use(signupRoute);
 app.use(signinRoute);
 app.use(signoutRoute);
