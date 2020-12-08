@@ -1,8 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { User } from "./types";
+import Axios from "axios";
 import "./Header.css";
 
-const Header: React.FC = () => {
+interface Props {
+  user: User | undefined;
+}
+
+const Header: React.FC<Props> = ({ user }) => {
+  const history = useHistory();
+
+  const handleSignout = async () => {
+    const { data } = await Axios.post("/api/users/signout");
+    if (data.errors) {
+      return alert(data.errors);
+    }
+    history.push("/");
+  };
   return (
     <header className="header">
       <div className="header__l">
@@ -13,16 +28,21 @@ const Header: React.FC = () => {
         </div>
       </div>
       <div className="header__r">
-        <button>Add a photo</button>
-        <button>
-          <Link to="/signin">Signin</Link>
-        </button>
-        <button>
-          <Link to="/signup">Signup</Link>
-        </button>
-        <button>
-          <Link to="/signout">Signout</Link>
-        </button>
+        {user ? (
+          <>
+            <button>Add a photo</button>
+            <button onClick={handleSignout}>Signout</button>
+          </>
+        ) : (
+          <>
+            <button>
+              <Link to="/signin">Signin</Link>
+            </button>
+            <button>
+              <Link to="/signup">Signup</Link>
+            </button>
+          </>
+        )}
       </div>
     </header>
   );
