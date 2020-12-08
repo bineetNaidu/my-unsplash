@@ -3,6 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
+import Signin from "./Signin";
 import Signup from "./Signup";
 import { User } from "./types";
 
@@ -24,6 +25,7 @@ const App: FC = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/signin" component={Signin} />
       </Switch>
     </>
   );
