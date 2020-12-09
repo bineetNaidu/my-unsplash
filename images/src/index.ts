@@ -5,6 +5,7 @@ import { currentUser } from "./middleware/currentUser";
 
 import { allImageRoute } from "./routers/index";
 import { createImageRoute } from "./routers/create";
+import { getImageByIDRoute } from "./routers/getImage";
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(currentUser);
 
 app.use(allImageRoute);
 app.use(createImageRoute);
+app.use(getImageByIDRoute);
 
 app.listen(4242, () => {
   console.log(">>> IMAGES SERVICE HAS STARTED <<<");
