@@ -21,7 +21,7 @@ const ImageSchema = new mongoose.Schema({
     require: true,
   },
   uploadedBy: {
-    type: mongoose.Types.ObjectId,
+    type: String,
     require: true,
   },
 });
