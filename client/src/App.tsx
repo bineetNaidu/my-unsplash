@@ -9,6 +9,8 @@ import { User } from "./types";
 
 const App: FC = () => {
   const [user, setUser] = useState<User | undefined>();
+  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     (async () => {
       const authUser = await Axios.get("/api/users/currentuser");
@@ -21,9 +23,15 @@ const App: FC = () => {
   }, [setUser]);
   return (
     <>
-      <Header user={user} />
+      <Header user={user} setVisible={setVisible} visible={visible} />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Home user={user} setVisible={setVisible} visible={visible} />
+          )}
+        />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
       </Switch>

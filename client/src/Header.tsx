@@ -6,9 +6,11 @@ import "./Header.css";
 
 interface Props {
   user: User | undefined;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  visible: boolean;
 }
 
-const Header: React.FC<Props> = ({ user }) => {
+const Header: React.FC<Props> = ({ user, setVisible, visible }) => {
   const history = useHistory();
 
   const handleSignout = async () => {
@@ -30,7 +32,7 @@ const Header: React.FC<Props> = ({ user }) => {
       <div className="header__r">
         {user ? (
           <>
-            <button>Add a photo</button>
+            <button onClick={() => setVisible(!visible)}>Add a photo</button>
             <button onClick={handleSignout}>Signout</button>
           </>
         ) : (
