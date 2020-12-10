@@ -1,0 +1,28 @@
+.modal {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+}
+
+.modal > form {
+  width: 40%;
+  margin: 8% auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 9px;
+  z-index: 1000;
+}
+
+.modal > form button {
+  padding: 1rem 1.5rem;
+  color: #fff;
+  border-radius: 10px;
+  background-color: rgb(50, 153, 50);
+  outline-width: 0;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+  margin: 0.5rem 5px;
+}
