@@ -8,7 +8,42 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-shadow: 2px 2px 4px 0 #ccc;
+  position: relative;
 }
 .image > img {
   max-width: 100%;
+}
+
+.image > button {
+  padding: 0.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: red;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+}
+.image:hover > button {
+  opacity: 1;
+}
+
+.image__name {
+  position: absolute;
+  bottom: 18px;
+  left: 15px;
+  color: #fff;
+  font-size: larger;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 0.5rem;
+  opacity: 0;
+  animation: cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.5s normal;
+}
+
+.image:hover .image__name {
+  opacity: 1;
 }
