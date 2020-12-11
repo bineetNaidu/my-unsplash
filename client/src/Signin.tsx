@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import "./Signup.css";
-
-const Signup: React.FC = () => {
+import { User } from "./types";
+interface Props {
+  handleAuthUser: (data: User) => void;
+}
+const Signup: React.FC<Props> = ({ handleAuthUser }) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
@@ -16,6 +19,7 @@ const Signup: React.FC = () => {
     if (data.errors) {
       return alert(data.errors);
     }
+    handleAuthUser(data.user);
     history.push("/");
   };
 

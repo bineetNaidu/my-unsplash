@@ -11,6 +11,10 @@ const App: FC = () => {
   const [user, setUser] = useState<User | undefined>();
   const [visible, setVisible] = useState(false);
 
+  const handleAuthUser = (data: User) => {
+    setUser(data);
+  };
+
   useEffect(() => {
     (async () => {
       const authUser = await Axios.get("/api/users/currentuser");
@@ -23,7 +27,12 @@ const App: FC = () => {
   }, [setUser]);
   return (
     <>
-      <Header user={user} setVisible={setVisible} visible={visible} />
+      <Header
+        user={user}
+        setUser={setUser}
+        setVisible={setVisible}
+        visible={visible}
+      />
       <Switch>
         <Route
           exact
@@ -32,8 +41,16 @@ const App: FC = () => {
             <Home user={user} setVisible={setVisible} visible={visible} />
           )}
         />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/signin" component={Signin} />
+        <Route
+          exact
+          path="/signup"
+          render={() => <Signup handleAuthUser={handleAuthUser} />}
+        />
+        <Route
+          exact
+          path="/signin"
+          render={() => <Signin handleAuthUser={handleAuthUser} />}
+        />
       </Switch>
     </>
   );

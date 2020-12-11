@@ -8,9 +8,10 @@ interface Props {
   user: User | undefined;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   visible: boolean;
+  setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
 }
 
-const Header: React.FC<Props> = ({ user, setVisible, visible }) => {
+const Header: React.FC<Props> = ({ user, setVisible, visible, setUser }) => {
   const history = useHistory();
 
   const handleSignout = async () => {
@@ -18,6 +19,7 @@ const Header: React.FC<Props> = ({ user, setVisible, visible }) => {
     if (data.errors) {
       return alert(data.errors);
     }
+    setUser(undefined);
     history.push("/");
   };
   return (
