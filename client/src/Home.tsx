@@ -11,44 +11,7 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({ user, setVisible, visible }) => {
-  const [images, setImages] = useState([
-    {
-      _id: "1",
-      url:
-        "https://images.unsplash.com/photo-1607676965446-7368a12426d0?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      name: "dasdsa",
-    },
-    {
-      _id: "1",
-      url:
-        "https://images.unsplash.com/photo-1607676965446-7368a12426d0?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      name: "dasdsa",
-    },
-    {
-      _id: "3",
-      url:
-        "https://images.unsplash.com/photo-1607577070449-531c2296916c?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      name: "dasdsa",
-    },
-    {
-      _id: "1",
-      url:
-        "https://images.unsplash.com/photo-1607676965446-7368a12426d0?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      name: "dasdsa",
-    },
-    {
-      _id: "3",
-      url:
-        "https://images.unsplash.com/photo-1607577070449-531c2296916c?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      name: "dasdsa",
-    },
-    {
-      _id: "1",
-      url:
-        "https://images.unsplash.com/photo-1607676965446-7368a12426d0?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      name: "dasdsa",
-    },
-  ]);
+  const [images, setImages] = useState([]);
   useEffect(() => {
     (async () => {
       const { data } = await Axios.get("/api/images/");
