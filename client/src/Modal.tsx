@@ -4,9 +4,11 @@ import "./Modal.css";
 
 interface Props {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setImages: React.Dispatch<React.SetStateAction<any>>;
+  images: any[];
 }
 
-const Modal: React.FC<Props> = ({ setVisible }) => {
+const Modal: React.FC<Props> = ({ setVisible, images, setImages }) => {
   const [url, setUrl] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -20,6 +22,7 @@ const Modal: React.FC<Props> = ({ setVisible }) => {
           description,
         });
         if (data.errors) throw new Error(data.errors);
+        setImages([data.image, ...images]);
         setVisible(false);
       }
     } catch (e) {

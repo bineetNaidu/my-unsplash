@@ -1,10 +1,10 @@
 import React from "react";
-import { User, Image as UserInterface } from "./types";
+import { User, Image as ImageInterface } from "./types";
 import "./Image.css";
 
 interface Props {
   user: User;
-  image: UserInterface;
+  image: ImageInterface | any;
 }
 
 const Image: React.FC<Props> = ({ image, user }) => {
