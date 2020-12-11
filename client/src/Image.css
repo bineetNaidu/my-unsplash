@@ -1,8 +1,14 @@
 .image {
-  padding-bottom: 5000px;
+  display: inline-block;
+  background: #fff;
+  padding: 1em;
+  margin: 0 0 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow: 2px 2px 4px 0 #ccc;
 }
 .image > img {
-  width: 100%;
-  object-fit: contain;
-  height: 100%;
+  max-width: 100%;
 }
